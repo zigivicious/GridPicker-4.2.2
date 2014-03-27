@@ -7,7 +7,7 @@ Ext.application({
 	}
 
 	,requires: [
-		'Ext.ux.Rixo.form.field.GridPicker',
+		'Ext.ux.form.field.GridPicker',
 		'Ext.grid.feature.Grouping'
 	]
 
@@ -118,12 +118,12 @@ Ext.application({
 							,items: [{
 								title: "Grid pickers"
 								,items: items.filter(function(item) {
-									return item instanceof Ext.ux.Rixo.form.field.GridPicker;
+									return item instanceof Ext.ux.form.field.GridPicker;
 								})
 							},{
 								title: "Regular combo boxes"
 								,items: items.filter(function(item) {
-									return item instanceof Ext.ux.Rixo.form.field.GridPicker === false;
+									return item instanceof Ext.ux.form.field.GridPicker === false;
 								})
 							}]
 							,flex: 1
@@ -234,7 +234,7 @@ Ext.application({
 		var me = this;
 
 		var configs = [{
-			xclass: 'Ext.ux.Rixo.form.field.GridPicker'
+			xclass: 'Ext.ux.form.field.GridPicker'
 
 			,name: 'grid'
 			,fieldLabel: "Grid"
@@ -280,7 +280,7 @@ Ext.application({
 				}
 			}
 		},{
-			xclass: 'Ext.ux.Rixo.form.field.GridPicker'
+			xclass: 'Ext.ux.form.field.GridPicker'
 
 			,name: 'groupingGrid'
 			,fieldLabel: "Grouping grid"
