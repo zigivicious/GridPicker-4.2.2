@@ -9,7 +9,7 @@ This [`GridPicker`][0] component is a reimplementation of Rixo's [`GridPicker`][
 Too Remove all workarounds/fixes for layout issues that comes with gridpicker. By:
 - Creating grid with different configs
 - Implementing alignPicker
-- 
+
 
 And Some other changes like:
 
