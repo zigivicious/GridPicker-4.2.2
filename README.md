@@ -4,26 +4,35 @@ GridPicker
 Compatible with: *`ExtJS 4.2.1`*
 
 
-The [`GridPicker`][0] component has rewritten Rixo's [`GridPicker`][1] that replaces the default boundlist view in [`ComboBox`][2] with [`GridPanel`][3].
+This [`GridPicker`][0] component has been rewritten over Rixo's [`GridPicker`][1] that replaces the default boundlist view in [`ComboBox`][2] with [`GridPanel`][3].
 
-Removed all workarounds or fixes for layout issues that comes with gridpicker. By
-- Creating picker grid with differend config
-- Implenenting alignPicker
+Too Remove all workarounds or fixes for layout issues that comes with gridpicker. By:
+- Creating picker grid with different config
+- Implementing alignPicker
 
+And Some other changes like:
+
++ Fire select event on selection by keyNav
++ scroll to highlighted item on query
+
+TODO:
+
+will be working on multiSelect soon.
 
 GridPickerSearch
 ================
 
 
-The [`GridPickerSearch`][4] component extends this [`GridPicker`][0] to use it as a searchingcombo.
+The [`GridPickerSearch`][4] component extends this [`GridPicker`][0] to make it a searching combo.
 It uses clear trigger and only expands picker on query.
 
 
 Demo
 ---
 
- [GridPicker Examples][5]
- [GridPickerSearch Example][6]
+- [GridPicker Examples][5]
+ 
+- [GridPickerSearch Example][6]
 
   [0]: https://github.com/yogeshpandey009/GridPickerSearch/
   [1]: https://github.com/rixo/GridPicker/
