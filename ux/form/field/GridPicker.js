@@ -1,10 +1,7 @@
-Ext.define('Ext.ux.form.field.GridPickerSearch', {
+Ext.define('Ext.ux.form.field.GridPicker', {
     extend: 'Ext.form.field.ComboBox',
-    alias: 'widget.gridpickersearch',
+    alias: 'widget.gridpicker',
     requires: ['Ext.grid.Panel', 'Ext.ux.form.field.GridPickerKeyNav'],
-    triggerCls: 'x-form-arrow-trigger', // using clear value trigger
-	hideTrigger: true,
-    triggerAction: 'query',
     /**
      * Configuration object for the picker grid. It will be merged with
      * {@link #defaultGridConfig} before creating the grid with
@@ -16,7 +13,8 @@ Ext.define('Ext.ux.form.field.GridPickerSearch', {
     defaultGridConfig: {
         //loadingHeight: 70,
         minWidth: 70,
-        maxHeight: 300,
+        minHeight: 70,
+        maxHeight: 250,
         hideMode: 'offsets',
         //shadow: 'sides',
         //        viewConfig: {
@@ -63,7 +61,7 @@ Ext.define('Ext.ux.form.field.GridPickerSearch', {
         this.bindPicker(grid);
         return this.picker = grid;
     },
-	/**
+    /**
      * @private
      * Enables the key nav for the gridPicker when it is expanded.
      */
@@ -75,8 +73,7 @@ Ext.define('Ext.ux.form.field.GridPickerSearch', {
         if (keyNav) {
             keyNav.enable();
         } else {
-            keyNav = me.listKeyNav = Ext.create(
-                'Nsm.customcomponent.form.field.GridPickerKeyNav', {
+            keyNav = me.listKeyNav = Ext.create('Ext.ux.form.field.GridPickerKeyNav', {
                 target: this.inputEl,
                 forceKeyDown: true,
                 pickerField: this,
@@ -97,12 +94,12 @@ Ext.define('Ext.ux.form.field.GridPickerSearch', {
     alignPicker: function() {
         this.getPicker().showBy(this);
     },
-	/**
-	 * Binds the specified grid to this picker.
-	 *
-	 * @param {Ext.grid.Panel}
-	 * @private
-	 */
+    /**
+     * Binds the specified grid to this picker.
+     *
+     * @param {Ext.grid.Panel}
+     * @private
+     */
     bindPicker: function(grid) {
         grid.ownerCt = this;
         grid.registerWithOwnerCt();
@@ -125,15 +122,6 @@ Ext.define('Ext.ux.form.field.GridPickerSearch', {
                 uber.apply(this, arguments);
             }
         };
-    },
-    /**
-     * Handles the trigger click; by default toggles between expanding and collapsing the picker component.
-     * @protected
-     */
-    onTriggerClick: function() {
-        this.clearValue();
-        //this.callParent(arguments);
-        this.collapse();
     },
     // @private
     onTypeAhead: function() {
@@ -173,20 +161,17 @@ Ext.define('Ext.ux.form.field.GridPickerSearch', {
             //this.highlightAt(lastSelected || 0);
         }
     },
-	//Overridden to ignore selectionchange in grid on query
+    //Overridden to ignore selectionchange in grid on query
     doQuery: function() {
         this.ignoreSelection++;
         this.callParent(arguments);
         this.ignoreSelection--;
     },
-	//Overridden to scroll selection into view
+    //Overridden to scroll selection into view
     afterQuery: function(queryPlan) {
         var sm = this.getPicker().getSelectionModel()
         this.callParent(arguments);
         var lastSelected = sm.getLastSelected();
-        if (!queryPlan.query) {
-            this.collapse();
-        }
         if (sm.hasSelection()) {
             this.highlightAt(sm.getSelection()[0]);
         }
@@ -216,17 +201,8 @@ Ext.define('Ext.ux.form.field.GridPickerSearch', {
             Ext.fly(node).scrollIntoView(view.el, false);
         } else if (bufferedPlugin) {
             //if (!isNaN(bufferedPlugin.viewSize)) { //if view is not ready yet! viewSize is NaN, fixed by hideMode: offset
-                bufferedPlugin.scrollTo(index);
+            bufferedPlugin.scrollTo(index);
             //}
         }
-    },
-	//overridden to hide 'clear trigger' if value is empty
-    onChange: function(newVal, oldVal) {
-        if (newVal) {
-            this.setHideTrigger(false);
-        } else {
-            this.setHideTrigger(true);
-        }
-        this.callParent(arguments);
     }
 });
