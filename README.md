@@ -22,12 +22,12 @@ It uses clear trigger and only expands picker on query.
 Demo
 ---
 
- [Try GridPicker Example][5].
- [Try GridPickerSearch Example][6].
+ [Try GridPicker Example][5]
+ [Try GridPickerSearch Example][6]
 
-  [0]: https://github.com/rixo/GridPicker/
+  [0]: https://github.com/yogeshpandey009/GridPickerSearch/
   [1]: https://github.com/rixo/GridPicker/
   [2]: http://docs.sencha.com/extjs/4.2.1/#!/api/Ext.form.field.ComboBox
   [3]: http://docs.sencha.com/extjs/4.2.1/#!/api/Ext.grid.Panel
-  [4]: http://planysphere.fr/ext/GridPicker/examples
+  [4]: https://fiddle.sencha.com/#fiddle/4j9
   [6]: http://docs.sencha.com/extjs/4.2.0/#!/api/Ext.form.field.ComboBox-cfg-defaultListConfig
