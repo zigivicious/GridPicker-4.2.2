@@ -1,9 +1,7 @@
 /**
  * Key navigation for {@link Ext.ux.form.field.GridPicker}.
- *
- * @since 2013-06-20 16:07
  */
-Ext.define('Nsm.customcomponent.form.field.GridPickerKeyNav', {
+Ext.define('Ext.ux.form.field.GridPickerKeyNav', {
     extend: 'Ext.util.KeyNav',
     constructor: function(config) {
         this.pickerField = config.pickerField;
