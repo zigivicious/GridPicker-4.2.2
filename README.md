@@ -7,8 +7,8 @@ Compatible with: *`ExtJS 4.2.1`*
 This [`GridPicker`][0] component is a reimplementation of Rixo's [`GridPicker`][1] that replaces the default boundlist view in [`ComboBox`][2] with [`GridPanel`][3].
 
 Too Remove all workarounds/fixes for layout issues that comes with gridpicker. By:
-- Creating grid with different configs
-- Implementing alignPicker
+- Creating grid with different config.
+- Implementing different alignPicker method
 
 
 And Some other changes like:
@@ -35,10 +35,10 @@ Demo
  
 - [GridPickerSearch Example][6]
 
-  [0]: https://github.com/yogeshpandey009/GridPickerSearch/blob/master/ux/form/field/GridPicker.js
+  [0]: https://github.com/yogeshpandey009/GridPicker-Search-4.2.1/blob/master/ux/form/field/GridPicker.js
   [1]: https://github.com/rixo/GridPicker/
   [2]: http://docs.sencha.com/extjs/4.2.1/#!/api/Ext.form.field.ComboBox
   [3]: http://docs.sencha.com/extjs/4.2.1/#!/api/Ext.grid.Panel
-  [4]: https://github.com/yogeshpandey009/GridPickerSearch/blob/master/ux/form/field/GridPickerSearch.js
+  [4]: https://github.com/yogeshpandey009/GridPicker-Search-4.2.1/blob/master/ux/form/field/GridPickerSearch.js
   [5]: https://fiddle.sencha.com/#fiddle/4j9
   [6]: https://fiddle.sencha.com/#fiddle/4jb
