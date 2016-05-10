@@ -6,121 +6,47 @@ Ext.Loader.setConfig({
 	}
 });
 Ext.require('Ext.ux.form.field.GridPicker');
+Ext.require('Ext.ux.model.Record');
+Ext.require('Ext.ux.store.Records');
 
 Ext.application({
     name: 'GridPicker Examples',
     launch: function() {
-        // --- Example 1: Buffered Grid ------------------------------------------------------------------------------------
+        var store = Ext.create('Ext.ux.store.Records', {
+        });
 
-        var data = [],
-            i;
-
-        for (i = 1; i <= 50000; i++) {
-            data.push("Record #" + i);
-        }
+        var tpl = new Ext.XTemplate(
+            '<a class="x-form-ui-projectcombo">' +
+            '<span class="first">{name}</span>' +
+            '</br>' +
+            '<span>{city} {countryCode}</span>' +
+            '</a>'
+        );
 
         Ext.widget('gridpicker', {
             renderTo: 'example1',
             gridConfig: {
-                minHeight: 100,
+                minHeight: 200,
                 plugins: {
                     ptype: 'bufferedrenderer'
                 }
             },
+            width: 250,
+            displayField: 'title',
+            valueField: 'threadid',
             queryMode: 'local',
             anyMatch: true,
             lastQuery: '',
-            store: data,
+            store: store,
+            emptyText: 'No match found',
+            itemTpl: tpl,
             listeners: {
                 select: function(combo, records) {
-                    Ext.Msg.alert("Record Selected", records[0].get('field1'));
+                    Ext.Msg.alert("Thread", records[0].get('name'));
                 }
             }
         });
 
-        // --- Example 2: Simple Grid --------------------------------------------------------------------------------------
-
-        Ext.widget('gridpicker', {
-            renderTo: 'example2',
-            store: ['Foo', 'Bar', 'Baz']
-        });
-
-        // --- Example 3: Grid Features ------------------------------------------------------------------------------------
-
-        data = [];
-        ['Foo', 'Bar', 'Baz'].forEach(function(group) {
-            for (var i = 1; i <= 5; i++) {
-                data.push([group + ' #' + i, group]);
-            }
-        });
-
-        Ext.widget('gridpicker', {
-            renderTo: 'example3',
-            queryMode: 'local',
-            typeAhead: true,
-            store: {
-                fields: ['name', 'group'],
-                proxy: {
-                    type: 'memory',
-                    reader: 'array'
-                },
-                data: data,
-                groupField: 'group',
-                sorters: {
-                    property: 'name',
-                    order: 'ASC'
-                }
-            },
-            displayField: 'name',
-            gridConfig: {
-                features: [{
-                    ftype: 'grouping',
-                    groupHeaderTpl: '{name}',
-                    collapsible: false
-                }],
-                columns: [{
-                    xtype: 'rownumberer'
-                }, {
-                    dataIndex: 'name',
-                    flex: 1
-                }, {
-                    width: 30,
-                    renderer: function(value, md, record, i) {
-                        return '<img src="' + ['http://upload.wikimedia.org/wikipedia/commons/b/b2/Happy_icon-16x16.gif', 'http://upload.wikimedia.org/wikipedia/commons/b/b1/Gnome-emblem-web-16x16.png', 'http://upload.wikimedia.org/wikipedia/commons/9/90/U_2A568_16x16.gif'][i % 3] + '" />';
-                    }
-                }],
-                tbar: {
-                    defaults: {
-                        enableToggle: true,
-                        pressed: true
-                    },
-                    items: [{
-                        text: "Foo"
-                    }, {
-                        text: "Bar"
-                    }, {
-                        text: "Baz"
-                    }]
-                }, // Filtering logic
-                listeners: {
-                    single: true,
-                    afterrender: function() {
-                        var grid = this,
-                            store = this.getStore(),
-                            filters = {};
-                        grid.query('button').forEach(function(button) {
-                            button.on('toggle', function(button, pressed) {
-                                filters[button.text] = pressed;
-                                store.filter(function(record) {
-                                    return filters[record.get('name').substr(0, 3)] !== false;
-                                });
-                                grid.pickerField.alignPicker(); // update grid position
-                            })
-                        });
-                    }
-                }
-            }
-        });
-
+        store.getRange(0, 199);
     }
 });
